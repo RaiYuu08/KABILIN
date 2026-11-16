@@ -1,0 +1,18 @@
+/* The clover and wordmark share one perspective and one rotation. */
+.logo-stage{position:relative;display:grid;place-items:center;width:100%;max-width:780px;height:310px;margin:0 auto 14px;perspective:1100px;pointer-events:none;user-select:none;-webkit-user-select:none;outline:none}
+.logo-stage:focus-visible{outline:none}
+.logo-stage.is-dragging .clover-slice :is(path,circle,ellipse),.logo-stage.is-dragging .logo-wordmark :is(h1,span){cursor:grabbing}
+.logo-object{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform;pointer-events:none}
+.clover-emblem{position:absolute;top:0;left:50%;width:176px;height:176px;transform:translateX(-50%) translateZ(18px) rotateZ(-8deg);transform-style:preserve-3d}
+.clover-slice{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform:translateZ(var(--depth));fill:var(--edge,#355039)}
+.clover-slice :is(path,circle,ellipse){pointer-events:visiblePainted;cursor:grab;touch-action:none}
+.clover-front{--depth:10px}
+.logo-wordmark{position:absolute;left:50%;width:max-content;bottom:2px;transform:translateX(-50%);transform-style:preserve-3d}
+.logo-wordmark :is(h1,span){pointer-events:auto;cursor:grab;touch-action:none}
+.hero .logo-wordmark h1,.logo-letter-depth{font-family:Caveat,"Segoe Script",cursive;font-size:clamp(4rem,16vw,8rem);font-weight:700;line-height:1.1;letter-spacing:.08em;white-space:nowrap;margin:0;padding-left:.08em}
+.hero .logo-wordmark h1{position:relative;transform:translateZ(6px);color:var(--terra);text-shadow:0 1px 0 #efb28b}
+.logo-letter-depth{position:absolute;inset:0;color:#854024;transform:translateZ(var(--depth));-webkit-text-stroke:.5px #854024}
+@media(max-width:600px){.logo-stage{height:245px;perspective:800px;margin-bottom:10px}.clover-emblem{width:150px;height:150px}.logo-wordmark{bottom:4px}}
+@media(prefers-reduced-motion:reduce){.logo-object{will-change:auto}}
+.about-clover{width:190px;height:200px;max-width:100%;margin:0 0 18px;perspective:800px}
+.about-clover .clover-emblem{width:180px;height:180px}

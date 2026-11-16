@@ -1,0 +1,110 @@
+/* A little movement, with the same paper, ink, and handmade shapes. */
+:root{--ease-out:cubic-bezier(.22,1,.36,1);--ease-soft:cubic-bezier(.25,.8,.25,1);--nav-height:62px}
+html{scroll-padding-top:calc(var(--nav-height) + 20px)}
+body{overflow-x:clip}
+button,input,a{-webkit-tap-highlight-color:transparent}
+button{touch-action:manipulation}
+a{color:var(--terra);text-underline-offset:4px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--green);outline-offset:5px}
+#app:focus{outline:none}
+.skip-link{position:fixed;top:10px;left:12px;z-index:30;background:var(--card);border:2px solid var(--terra);border-radius:12px;padding:8px 16px;translate:0 -150%;transition:translate .2s}
+.skip-link:focus{translate:0 0}
+nav{background:var(--card);background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:box-shadow .35s var(--ease-soft)}
+body.is-scrolled nav{box-shadow:0 5px 20px #3b24160d}
+nav a{position:relative;border-bottom:0;padding:3px 8px 5px;transition:color .2s}
+nav a::after{content:"";position:absolute;left:7px;right:7px;bottom:3px;height:3px;border-radius:65% 30% 60% 45%;background:var(--terra);transform:scaleX(0) rotate(-1deg);transform-origin:left;transition:transform .35s var(--ease-out)}
+nav a.on::after,nav a:hover::after{transform:scaleX(1) rotate(-1deg)}
+main{padding-top:26px}
+h2{margin-top:38px;margin-bottom:20px;text-wrap:balance}
+.intro{line-height:1.85}
+.pat{opacity:.6}
+.grid{gap:22px}
+.card{display:flex;flex-direction:column;transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out),border-color .3s,opacity .65s var(--ease-out),translate .65s var(--ease-out)}
+.card h3{margin:13px 5px 6px;line-height:1.12}
+.card p{margin:0 5px;line-height:1.75}
+.card-tags{margin:12px 0 2px;padding-top:0;margin-top:auto;padding-top:14px}
+.tag{line-height:1.7;vertical-align:top}
+.recipe-frame{overflow:hidden;border-radius:10px;isolation:isolate;background:#faf3e6;aspect-ratio:6/5;flex-shrink:0}
+.card .recipe-art{height:100%;border-radius:0;transition:transform .65s var(--ease-out)}
+.rec .recipe-frame{border:3px double var(--terra);border-radius:20px}
+.rec .recipe-art{border:0;border-radius:0;height:100%}
+.rec{margin-top:18px;align-items:start}
+.rec>div:first-child{position:sticky;top:calc(var(--nav-height) + 24px)}
+.rec h1{line-height:1.1;text-wrap:balance}
+.meta{gap:8px;margin:18px 0 24px}
+.meta span{padding:4px 12px}
+.story,.note,.cc,.stp{transition:border-color .3s,box-shadow .3s,opacity .65s var(--ease-out),translate .65s var(--ease-out)}
+.story{padding:20px;line-height:1.8}
+.story h3{font-size:1.8rem;margin-bottom:8px}
+.note{padding:14px 18px;line-height:1.8}
+.stp{gap:16px;padding:16px 18px;margin:14px 0;line-height:1.8}
+.stp b{min-width:24px}
+.cc{padding:26px 24px}
+.cc h3{margin-top:16px}
+.cc .av{transition:transform .45s var(--ease-out)}
+footer{line-height:1.5;padding:36px 20px}
+.search{position:relative;align-items:center;gap:10px;padding:0 16px;margin:24px auto 0;background:var(--card);border:2px solid var(--line);border-radius:30px;transition:border-color .25s,box-shadow .3s,transform .3s var(--ease-out)}
+.search:focus-within{border-color:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 12%,transparent);transform:translateY(-1px)}
+.search>svg{flex-shrink:0;color:var(--mut)}
+.search input{min-width:0;width:100%;padding:14px 0;background:transparent;border:0;border-radius:0;outline:none;font-size:.95rem;line-height:1.6}
+.search input:focus-visible{outline:none}
+.search input::-webkit-search-cancel-button{-webkit-appearance:none}
+.search input::placeholder{color:var(--mut);opacity:.8}
+.search-clear{flex-shrink:0;width:32px;height:32px;border:0;border-radius:50%;padding:0;background:transparent;color:var(--mut);font:24px/1 Georgia,serif;cursor:pointer;transition:background .2s,color .2s}
+.search-clear:hover{background:var(--bg);color:var(--terra)}
+.search-clear[hidden]{display:none}
+.results-count{max-width:560px;margin:9px auto 18px;text-align:center;color:var(--mut);font-size:.8rem;min-height:1.5em}
+.results-count:empty{min-height:0;margin:0 0 20px}
+.empty-state{grid-column:1/-1;text-align:center;padding:32px 18px;border:2px dashed var(--line);border-radius:14px;background:var(--card)}
+.empty-state .hw{font-size:2rem;color:var(--green)}
+.empty-state p{margin:10px 0 0;color:var(--mut)}
+.tabs{gap:10px;margin:24px auto 28px}
+.tabs button{padding:6px 18px;min-height:40px;transition:background .25s,color .25s,transform .3s var(--ease-out),box-shadow .3s}
+.tabs button.on{box-shadow:2px 3px 0 var(--line)}
+.tabs button:active,.btn:active{transform:translateY(2px)}
+.ingredient-progress{margin:10px 0 16px}
+.ingredient-progress-header{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--mut);font-size:.8rem}
+.text-button{border:0;background:transparent;color:var(--terra);padding:5px 0;font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.text-button:disabled{opacity:.4;cursor:default}
+.ingredient-track{height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:8px}
+.ingredient-fill{display:block;height:100%;background:var(--green);transform:scaleX(var(--progress,0));transform-origin:left;transition:transform .45s var(--ease-out)}
+.ck{margin:10px 0}
+.ck li{margin:2px 0}
+.ck label{position:relative;display:flex;align-items:flex-start;gap:12px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:background .2s,color .25s}
+.ck input{flex-shrink:0;appearance:none;-webkit-appearance:none;display:grid;place-items:center;width:19px;height:19px;margin:4px 0 0;border:1.5px solid var(--line);border-radius:5px;background:var(--card);cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.ck input:checked{background:var(--green);border-color:var(--green)}
+.ck input:checked::after{content:"";width:8px;height:4px;border-left:2px solid white;border-bottom:2px solid white;transform:translateY(-1px) rotate(-45deg)}
+.ck label.is-checked{color:var(--mut)}
+.ck label.is-checked .ingredient-text{text-decoration:line-through;text-decoration-color:var(--line)}
+.back-top{position:fixed;z-index:6;right:22px;bottom:max(22px,env(safe-area-inset-bottom));width:44px;height:44px;border:1.5px solid var(--line);border-radius:50%;background:var(--card);color:var(--terra);box-shadow:2px 3px 0 var(--line);font:24px/1 Georgia,serif;cursor:pointer;opacity:0;visibility:hidden;translate:0 12px;transition:opacity .25s,translate .35s var(--ease-out),visibility .25s,box-shadow .25s}
+.back-top.is-visible{opacity:1;visibility:visible;translate:0 0}
+.motion-pending{opacity:0;translate:0 18px;transition:opacity .65s var(--ease-out),translate .65s var(--ease-out);transition-delay:var(--reveal-delay,0ms)}
+.motion-pending.is-revealed,.motion-pending:focus-within{opacity:1;translate:0 0}
+.card.motion-pending{transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out),border-color .3s,opacity .65s var(--ease-out),translate .65s var(--ease-out);transition-delay:0s,0s,0s,var(--reveal-delay,0ms),var(--reveal-delay,0ms)}
+/* Snapshot only the changing cookbook page; the navigation stays in place. */
+html{view-transition-name:none}
+#app{view-transition-name:cookbook}
+::view-transition-old(cookbook){animation:page-out .16s ease-in both}
+::view-transition-new(cookbook){animation:page-in .36s var(--ease-out) both}
+@keyframes page-out{to{opacity:0;transform:translateY(-6px)}}
+@keyframes page-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(hover:hover) and (pointer:fine){
+ .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:5px 9px 0 var(--line);border-color:var(--terra)}
+ .card:hover .recipe-art{transform:scale(1.035)}
+ .tabs button:not(.on):hover{background:var(--card);transform:translateY(-2px);box-shadow:1px 3px 0 var(--line)}
+ .story[href]:hover,.cc:hover{border-color:var(--green);box-shadow:2px 4px 0 var(--line)}
+ .cc:hover .av{transform:rotate(-5deg)}
+ .stp:hover{border-color:var(--green)}
+ .ck label:hover{background:var(--card)}
+ .back-top:hover{translate:0 -3px;box-shadow:3px 5px 0 var(--line)}
+}
+@media(hover:none){.card:hover{transform:none}}
+@media(max-width:720px){.rec>div:first-child{position:static}.two{gap:22px}main{padding-top:20px}.story{padding:16px}}
+@media(max-width:480px){nav{gap:0 10px;padding:6px 8px}nav a{font-size:1.4rem;padding:4px 6px 6px}.grid{gap:20px}.card{padding:11px}.card h3{font-size:2rem}.card p{font-size:.95rem}.back-top{right:14px;bottom:18px;width:40px;height:40px}.search{padding:0 12px;gap:8px}.search input{font-size:.85rem}.tabs{gap:8px}.tabs button{padding:5px 13px;font-size:1.2rem}.stp{padding:13px 14px}}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+ .motion-pending{opacity:1;translate:none}
+ .card:hover,.card:hover .recipe-art,.cc:hover .av{transform:none}
+ ::view-transition-old(cookbook),::view-transition-new(cookbook){animation:none}
+}
